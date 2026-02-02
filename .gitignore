@@ -1,0 +1,72 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+.pytest_cache/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Uploaded / Generated Files
+# =========================
+uploads/
+outputs/
+*.csv
+*.xlsx
+*.xls
+*.pdf
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Node / Frontend (if added later)
+# =========================
+node_modules/
+dist/
+build/
+
+# =========================
+# Docker
+# =========================
+*.pid
+*.tar
+
+# =========================
+# Uvicorn / FastAPI
+# =========================
+uvicorn.log
