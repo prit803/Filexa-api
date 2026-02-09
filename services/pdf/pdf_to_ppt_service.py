@@ -5,10 +5,15 @@ import shutil
 
 import shutil
 
+
 soffice_path = shutil.which("soffice")
 
+if not soffice_path and os.path.exists("/usr/bin/soffice"):
+    soffice_path = "/usr/bin/soffice"
+
 if not soffice_path:
-    raise RuntimeError("LibreOffice (soffice) not found in system PATH")
+    raise RuntimeError("LibreOffice (soffice) not found")
+
 
 def pdf_to_ppt(input_file):
     with tempfile.TemporaryDirectory() as tmpdir:
