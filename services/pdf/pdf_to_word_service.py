@@ -3,6 +3,12 @@ import tempfile
 import os
 import shutil
 
+import shutil
+
+soffice_path = shutil.which("soffice")
+
+if not soffice_path:
+    raise RuntimeError("LibreOffice (soffice) not found in system PATH")
 
 def pdf_to_word(input_file):
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -15,7 +21,7 @@ def pdf_to_word(input_file):
 
         # libreoffice command (cross-platform)
         command = [
-            "soffice",
+            soffice_path,
             "--headless",
             "--convert-to",
             "docx",

@@ -4,6 +4,15 @@ import os
 import shutil
 
 
+
+import shutil
+
+soffice_path = shutil.which("soffice")
+
+if not soffice_path:
+    raise RuntimeError("LibreOffice (soffice) not found in system PATH")
+
+
 def pdf_to_excel(input_file):
     with tempfile.TemporaryDirectory() as tmpdir:
         pdf_path = os.path.join(tmpdir, "input.pdf")
@@ -15,7 +24,7 @@ def pdf_to_excel(input_file):
 
         # LibreOffice headless conversion
         command = [
-            "soffice",
+            soffice_path,
             "--headless",
             "--convert-to",
             "xlsx",
