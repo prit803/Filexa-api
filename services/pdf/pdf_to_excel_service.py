@@ -3,16 +3,8 @@ import tempfile
 import os
 import shutil
 
-
-
-soffice_path = shutil.which("soffice")
-
-if not soffice_path and os.path.exists("/usr/bin/soffice"):
-    soffice_path = "/usr/bin/soffice"
-
-if not soffice_path:
-    raise RuntimeError("LibreOffice (soffice) not found")
-
+from core.config import get_soffice_path
+soffice = get_soffice_path()
 
 def pdf_to_excel(input_file):
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -25,7 +17,7 @@ def pdf_to_excel(input_file):
 
         # LibreOffice headless conversion
         command = [
-            soffice_path,
+            soffice,
             "--headless",
             "--convert-to",
             "xlsx",

@@ -3,16 +3,10 @@ import tempfile
 import os
 import shutil
 
-import shutil
 
+from core.config import get_soffice_path
+soffice = get_soffice_path()
 
-soffice_path = shutil.which("soffice")
-
-if not soffice_path and os.path.exists("/usr/bin/soffice"):
-    soffice_path = "/usr/bin/soffice"
-
-if not soffice_path:
-    raise RuntimeError("LibreOffice (soffice) not found")
 
 
 def pdf_to_ppt(input_file):
@@ -26,7 +20,7 @@ def pdf_to_ppt(input_file):
 
         # LibreOffice headless conversion
         command = [
-            soffice_path,
+            soffice,
             "--headless",
             "--convert-to",
             "pptx",
