@@ -1,12 +1,9 @@
-import shutil
-import os
-import subprocess
-
 import os
 import subprocess
 
 SOFFICE_CANDIDATES = [
     os.getenv("LIBREOFFICE_BIN"),
+    "/usr/bin/libreoffice",
     "/usr/lib/libreoffice/program/soffice",
     "/usr/bin/soffice",
 ]
@@ -25,4 +22,4 @@ def get_soffice_path() -> str:
             except Exception:
                 continue
 
-    raise RuntimeError("LibreOffice not available in Termux Ubuntu")
+    raise RuntimeError("LibreOffice not available in Ubuntu")
