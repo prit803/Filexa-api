@@ -7,9 +7,9 @@ import logging
 from core.config import get_soffice_path
 
 logger = logging.getLogger(__name__)
-soffice = get_soffice_path()
 
 def pdf_to_ppt(input_file):
+    soffice = get_soffice_path()
     with tempfile.TemporaryDirectory() as tmpdir:
         pdf_path = os.path.join(tmpdir, "input.pdf")
         pptx_path = os.path.join(tmpdir, "input.pptx")

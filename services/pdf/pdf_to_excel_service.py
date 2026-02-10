@@ -4,9 +4,10 @@ import os
 import shutil
 
 from core.config import get_soffice_path
-soffice = get_soffice_path()
+
 
 def pdf_to_excel(input_file):
+    soffice = get_soffice_path()
     with tempfile.TemporaryDirectory() as tmpdir:
         pdf_path = os.path.join(tmpdir, "input.pdf")
         xlsx_path = os.path.join(tmpdir, "input.xlsx")
