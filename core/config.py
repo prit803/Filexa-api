@@ -1,25 +1,21 @@
 import os
 import subprocess
-
-SOFFICE_CANDIDATES = [
-    os.getenv("LIBREOFFICE_BIN"),
-    "/usr/bin/libreoffice",
-    "/usr/lib/libreoffice/program/soffice",
-    "/usr/bin/soffice",
-]
+import shutil
 
 def get_soffice_path() -> str:
-    for path in SOFFICE_CANDIDATES:
-        if path and os.path.isfile(path) and os.access(path, os.X_OK):
-            try:
-                subprocess.run(
-                    [path, "--version"],
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                    check=True
-                )
-                return path
-            except Exception:
-                continue
+    # First try system PATH
+    path = shutil.which("soffice")
+    if path:
+        return path
+
+    # Fallback manual paths
+    candidates = [
+        "/usr/bin/soffice",
+        "/usr/lib/libreoffice/program/soffice",
+    ]
+
+    for path in candidates:
+        if os.path.isfile(path) and os.access(path, os.X_OK):
+            return path
 
     raise RuntimeError("LibreOffice not available in Ubuntu")
