@@ -5,12 +5,6 @@ from models.feature import Feature
 
 router = APIRouter(prefix="/admin/features", tags=["Admin"])
 
-from fastapi import APIRouter, Query
-from fastapi.responses import JSONResponse
-from core.database import SessionLocal
-from models.feature import Feature
-
-router = APIRouter(prefix="/features", tags=["Features"])
 
 @router.get("")
 def list_all_features():
@@ -62,13 +56,18 @@ def list_all_features():
             status_code=500
         )
 
+
 @router.post("/{feature_key}/toggle")
 def toggle_feature(feature_key: str, is_active: bool):
     try:
         db = SessionLocal()
-        feature = db.query(Feature).filter(Feature.feature_key == feature_key).first()
+
+        feature = db.query(Feature).filter(
+            Feature.feature_key == feature_key
+        ).first()
 
         if not feature:
+            db.close()
             return JSONResponse(
                 content={
                     "success": False,
@@ -88,7 +87,10 @@ def toggle_feature(feature_key: str, is_active: bool):
             content={
                 "success": True,
                 "successMessage": "Feature status updated",
-                "data": {"feature": feature_key, "is_active": is_active},
+                "data": {
+                    "feature": feature_key,
+                    "is_active": is_active
+                },
                 "errorMessage": None,
                 "statusCode": "200"
             },
@@ -106,5 +108,3 @@ def toggle_feature(feature_key: str, is_active: bool):
             },
             status_code=500
         )
-
-
