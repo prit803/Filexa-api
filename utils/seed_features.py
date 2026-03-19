@@ -84,6 +84,32 @@ pdf_to_excel = Feature(
 )
 
 
+word_to_pdf = Feature(
+    feature_key="word_to_pdf",
+    slug="word-to-pdf",
+    name="Word to PDF",
+    desc="Convert Word documents into PDF files.",
+    icon="bi-file-earmark-pdf",
+    category="pdf",
+    keywords=["word to pdf", "docx to pdf", "convert word", "pdf", "document"],
+    is_active=True,
+    seo_title="Word to PDF Converter Online Free – Convert DOCX to PDF | Filexa",
+    seo_desc="Convert Word documents (DOCX) into high-quality PDF files instantly. Fast, secure, and privacy-first Word to PDF converter."
+)
+
+ppt_to_pdf = Feature(
+    feature_key="ppt_to_pdf",
+    slug="ppt-to-pdf",
+    name="PowerPoint to PDF",
+    desc="Convert PowerPoint presentations into PDF files.",
+    icon="bi-file-earmark-pdf",
+    category="pdf",
+    keywords=["ppt to pdf", "powerpoint to pdf", "convert ppt", "pdf"],
+    is_active=True,
+    seo_title="PowerPoint to PDF Converter Online Free – Convert PPT to PDF | Filexa",
+    seo_desc="Convert PowerPoint presentations (PPT/PPTX) into PDF instantly. Fast, secure, and privacy-first PPT to PDF converter."
+)
+
 # db.add(merge_pdf)
 # db.add(split_pdf)
 # db.add(compress_pdf)
@@ -91,5 +117,7 @@ pdf_to_excel = Feature(
 # db.add(pdf_to_word)
 # db.add(pdf_to_ppt)
 # db.add(pdf_to_excel)
+db.add(ppt_to_pdf)
+# db.add()
 db.commit()
 db.close()

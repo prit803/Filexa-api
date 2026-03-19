@@ -1,0 +1,94 @@
+VCN 
+subnet 
+gateway
+
+ssh -i "C:\Users\YOURNAME\Downloads\ssh-key-2026-02-15.key" ubuntu@PUBLIC_IP
+ssh -i "C:\Users\pritm\Downloads\ssh-key-2026-02-15.key" ubuntu@80.225.206.40
+
+
+.
+
+🔹 STEP-1: Instance ni details lo
+
+Oracle Console ma:
+
+Instances → filexa-api
+
+Details tab ma:
+
+Public IPv4 address copy karo
+👉 example: 152.xxx.xxx.xxx
+
+Username yaad rakho:
+
+Ubuntu image mate 👉 ubuntu
+
+🔹 STEP-2: SSH key check karo
+
+Tame pehle Download private key kari chhe
+👉 file normally aa rite hoy:
+
+ssh-key-2026-02-15.key
+
+
+📌 Aa file safe jagya ma hoy (Desktop / Downloads).
+
+🔹 STEP-3: Windows ma SSH connect (EASY WAY)
+✅ Option A: PowerShell (recommended)
+
+Start → search → PowerShell
+
+Open PowerShell
+
+Aa command paste karo (edit paths):
+
+ssh -i "C:\Users\YOURNAME\Downloads\ssh-key-2026-02-15.key" ubuntu@PUBLIC_IP
+
+
+👉 Example:
+
+ssh -i "C:\Users\Prit\Downloads\ssh-key-2026-02-15.key" ubuntu@152.xxx.xxx.xxx
+
+
+First time puchse:
+
+Are you sure you want to continue connecting (yes/no)?
+
+
+👉 yes type karo → Enter
+
+🔹 STEP-4: Success check ✅
+
+Jo aa dekhaay:
+
+ubuntu@filexa-api:~$
+
+
+🎉 CONGRATS!
+Tame server ma successfully login thai gaya.
+
+❌ Common problems & fix
+❗ Permission denied (publickey)
+
+➡️ Ensure:
+
+Username ubuntu j use karo
+
+Private key file correct chhe
+
+.key file rename na kari hoy
+
+🔜 NEXT STEP (VERY IMPORTANT)
+
+Have next ma aapde:
+
+System update
+
+LibreOffice (headless) install
+
+Python + FastAPI setup
+
+PDF → DOCX / PPTX / XLSX API ready
+
+👉 Bas bolo: “login done”
+Hu next commands turant aapi dais 🚀

@@ -1,0 +1,75 @@
+app/
+├── main.py                      # FastAPI app entry
+├── core/
+│   ├── config.py                # Env, settings
+│   ├── database.py              # DB connection
+│   ├── logging.py               # Logging setup
+│   └── feature_flags.py         # is_active logic (central)
+│
+├── api/
+│   ├── v1/
+│   │   ├── router.py            # Main API router
+│   │   ├── dependencies.py      # Global dependencies
+│   │
+│   │   ├── pdf/
+│   │   │   ├── router.py
+│   │   │   ├── merge.py
+│   │   │   ├── split.py
+│   │   │   ├── compress.py
+│   │   │   ├── convert.py       # pdf ↔ word/excel/ppt/jpg
+│   │   │   ├── security.py      # protect, unlock, sign
+│   │   │   ├── edit.py          # rotate, crop, watermark
+│   │   │   └── ocr.py
+│   │   │
+│   │   ├── image/
+│   │   │   ├── router.py
+│   │   │   ├── convert.py       # jpg/png/webp/heic
+│   │   │   ├── compress.py
+│   │   │   ├── resize.py
+│   │   │   └── rotate_crop.py
+│   │   │
+│   │   ├── admin/
+│   │   │   ├── router.py
+│   │   │   └── feature_toggle.py   # API to manage is_active
+│
+├── services/
+│   ├── pdf/
+│   │   ├── merge_service.py
+│   │   ├── split_service.py
+│   │   └── ocr_service.py
+│   │
+│   ├── image/
+│   │   ├── convert_service.py
+│   │   └── compress_service.py
+│
+├── models/
+│   ├── feature.py               # is_active model
+│   └── audit.py
+│
+├── schemas/
+│   ├── pdf.py
+│   ├── image.py
+│   └── feature.py
+│
+├── middleware/
+│   └── feature_guard.py         # Block inactive APIs
+│
+├── utils/
+│   ├── file_manager.py
+│   ├── validators.py
+│   └── response.py
+│
+├── storage/
+│   ├── uploads/
+│   ├── processed/
+│   └── temp/
+│
+├── tasks/
+│   └── background_jobs.py       # Heavy processing
+│
+├── tests/
+│   ├── pdf/
+│   ├── image/
+│   └── admin/
+│
+└── alembic/                     # Migrations
