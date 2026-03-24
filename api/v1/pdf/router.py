@@ -9,6 +9,13 @@ from api.v1.pdf.pdf_to_excel import router as pdf_to_excel_router
 from api.v1.pdf.word_to_pdf import router as word_to_pdf_router
 from api.v1.pdf.ppt_to_pdf import router as ppt_to_pdf_router
 
+from api.v1.pdf.excel_to_pdf import router as excel_to_pdf_router
+from api.v1.pdf.jpg_to_pdf import router as jpg_to_pdf_router
+from api.v1.pdf.pdf_to_jpg import router as pdf_to_jpg_router
+from api.v1.pdf.sign_pdf import router as sign_pdf_router
+from api.v1.pdf.unlock_pdf import router as unlock_pdf_router
+from api.v1.pdf.protect_pdf import router as protect_pdf_router
+
 
 setup_logging()
 
@@ -29,3 +36,12 @@ router.include_router(pdf_to_excel_router)
 router.include_router(word_to_pdf_router)
 
 router.include_router(ppt_to_pdf_router)
+
+
+
+router.include_router(excel_to_pdf_router)
+router.include_router(jpg_to_pdf_router)
+router.include_router(pdf_to_jpg_router)
+router.include_router(sign_pdf_router)
+router.include_router(unlock_pdf_router)
+router.include_router(protect_pdf_router)
