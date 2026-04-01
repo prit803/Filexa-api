@@ -15,7 +15,9 @@ from api.v1.pdf.pdf_to_jpg import router as pdf_to_jpg_router
 from api.v1.pdf.sign_pdf import router as sign_pdf_router
 from api.v1.pdf.unlock_pdf import router as unlock_pdf_router
 from api.v1.pdf.protect_pdf import router as protect_pdf_router
-
+from api.v1.pdf.watermark import router as watermark_pdf_router
+from api.v1.pdf.rotate import router as router_pdf_router
+from api.v1.pdf.html_to_pdf import router as html_to_pdf_router
 
 setup_logging()
 
@@ -45,3 +47,6 @@ router.include_router(pdf_to_jpg_router)
 router.include_router(sign_pdf_router)
 router.include_router(unlock_pdf_router)
 router.include_router(protect_pdf_router)
+router.include_router(watermark_pdf_router)
+router.include_router(router_pdf_router)
+router.include_router(html_to_pdf_router)

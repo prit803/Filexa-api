@@ -211,6 +211,70 @@ protect_pdf = Feature(
     seo_title="Protect PDF Online Free – Add Password to PDF | Filexa",
     seo_desc="Add password protection to PDF files instantly. Fast, secure, and privacy-first PDF protection tool."
 )
+
+
+
+watermark_pdf = Feature(
+    feature_key="pdf_watermark",
+    slug="add-watermark-pdf",
+    name="Add Watermark to PDF",
+    desc="Add text or image watermark to PDF files with full control over position, rotation, and opacity.",
+    icon="bi-droplet-half",
+    category="pdf",
+    keywords=[
+        "watermark pdf",
+        "add watermark",
+        "pdf watermark online",
+        "text watermark",
+        "image watermark",
+        "stamp pdf",
+        "brand pdf",
+        "protect pdf"
+    ],
+    is_active=True,
+    seo_title="Add Watermark to PDF Online Free – Text & Image Watermark | Filexa",
+    seo_desc="Add watermark to PDF files online using text or images. Customize position, opacity, and rotation. Fast, secure, and free PDF watermark tool."
+)
+rotate_pdf_feature = Feature(
+    feature_key="pdf_rotate_pdf",
+    slug="rotate-pdf",
+    name="Rotate PDF",
+    desc="Rotate PDF pages online. Rotate all or specific pages by 90, 180, or 270 degrees.",
+    icon="bi-arrow-clockwise",
+    category="pdf",
+    keywords=[
+        "rotate pdf",
+        "rotate pdf online",
+        "rotate pages",
+        "turn pdf",
+        "flip pdf",
+        "change pdf orientation"
+    ],
+    is_active=True,
+    seo_title="Rotate PDF Online Free – Change PDF Orientation Easily | Filexa",
+    seo_desc="Rotate PDF pages online for free. Change orientation of all or selected pages by 90, 180, or 270 degrees. Fast and secure tool."
+)
+
+
+html_to_pdf_feature = Feature(
+    feature_key="pdf_html_to_pdf",
+    slug="html-to-pdf",
+    name="HTML to PDF",
+    desc="Convert HTML to PDF easily using a fast and cross-platform engine.",
+    icon="bi-filetype-html",
+    category="pdf",
+    keywords=[
+        "html to pdf",
+        "convert html",
+        "webpage to pdf",
+        "pdf generator"
+    ],
+    is_active=True,
+    seo_title="HTML to PDF Converter Online Free – Fast & Secure | Filexa",
+    seo_desc="Convert HTML to PDF online for free. Works on all devices with fast and secure processing."
+)
+
+
 # db.add(merge_pdf)
 # db.add(split_pdf)
 # db.add(compress_pdf)
@@ -224,8 +288,12 @@ protect_pdf = Feature(
 # db.add(pdf_to_jpg)
 # db.add(jpg_to_pdf)
 # db.add(sign_pdf)
-db.add(image_convert)
-db.add(unlock_pdf)
-db.add(protect_pdf)
+# db.add(image_convert)
+# db.add(unlock_pdf)
+# db.add(protect_pdf)
+# db.add(watermark_pdf)
+# db.add(rotate_pdf_feature)
+# db.add(html_to_pdf_feature)
+
 db.commit()
 db.close()
