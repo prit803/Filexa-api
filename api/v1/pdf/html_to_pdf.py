@@ -13,7 +13,16 @@ router = APIRouter()
 logger = get_logger("htmlToPDF")
 
 
-@router.post("/html-to-pdf")
+@router.post(
+    "/html-to-pdf",
+    response_class=FileResponse,
+    responses={
+        200: {
+            "content": {"application/pdf": {}},
+            "description": "PDF file download"
+        }
+    }
+)
 async def convert_html_to_pdf(
     html: Optional[str] = Form(None),
     file: Optional[UploadFile] = File(None)
@@ -21,27 +30,28 @@ async def convert_html_to_pdf(
     logger.info("HTML to PDF API called")
 
     temp_dir = tempfile.gettempdir()
-
-    input_path = None
     output_path = os.path.join(temp_dir, f"{uuid.uuid4()}.pdf")
 
     try:
-        # Case 1: Raw HTML
+        # ✅ Case 1: Raw HTML
         if html:
-            html_to_pdf(html, output_path)
+            await html_to_pdf(html, output_path)
 
-        # Case 2: HTML file
+        # ✅ Case 2: HTML file
         elif file:
             content = (await file.read()).decode("utf-8")
-            html_to_pdf(content, output_path)
+            await html_to_pdf(content, output_path)
 
         else:
-            return {"error": "Provide HTML content or file"}
+            return {"error": "Provide HTML or file"}
 
+        logger.info("PDF generated successfully")
+
+        # ✅ IMPORTANT → Swagger download works
         return FileResponse(
             output_path,
             media_type="application/pdf",
-            filename="converted.pdf"
+            filename="converted.pdf"  # 👈 REQUIRED for download button
         )
 
     except Exception as e:
@@ -49,5 +59,6 @@ async def convert_html_to_pdf(
         return {"error": "Something went wrong"}
 
     finally:
-        if input_path and os.path.exists(input_path):
-            os.remove(input_path)
+        # 🔥 Cleanup (optional but recommended)
+        if os.path.exists(output_path):
+            pass  # keep file for download (or delete later via cron)

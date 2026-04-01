@@ -1,3 +1,10 @@
+import sys
+import asyncio
+
+# ✅ FIX for Windows + Playwright (TOP MOST)
+if sys.platform.startswith("win"):
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 from fastapi import FastAPI
 from middleware.feature_guard import feature_guard
 from api.v1.pdf.router import router as pdf_router
