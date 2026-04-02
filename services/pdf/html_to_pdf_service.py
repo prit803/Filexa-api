@@ -1,18 +1,34 @@
 from playwright.async_api import async_playwright
+import tempfile
+import os
+import shutil
 
 
-async def html_to_pdf(html_content: str, output_path: str):
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+async def html_to_pdf_stream(html_content: str):
+    """
+    Convert HTML → PDF and return stream (same style as sign_pdf)
+    """
 
-        context = await browser.new_context()
-        page = await context.new_page()
+    with tempfile.TemporaryDirectory() as tmpdir:
+        output_path = os.path.join(tmpdir, "output.pdf")
 
-        await page.set_content(html_content, wait_until="networkidle")
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            context = await browser.new_context()
+            page = await context.new_page()
 
-        await page.pdf(path=output_path, format="A4")
+            await page.set_content(html_content, wait_until="networkidle")
 
-        await context.close()
-        await browser.close()
+            await page.pdf(path=output_path, format="A4")
 
-    return output_path
+            await context.close()
+            await browser.close()
+
+        # return as stream (same as your sign_pdf)
+        output = tempfile.SpooledTemporaryFile()
+
+        with open(output_path, "rb") as f:
+            shutil.copyfileobj(f, output)
+
+        output.seek(0)
+        return output

@@ -18,6 +18,17 @@ from api.v1.pdf.protect_pdf import router as protect_pdf_router
 from api.v1.pdf.watermark import router as watermark_pdf_router
 from api.v1.pdf.rotate import router as router_pdf_router
 from api.v1.pdf.html_to_pdf import router as html_to_pdf_router
+from api.v1.pdf.pdf_organize import router as pdf_organize_router
+from api.v1.pdf.pdf_to_pdfa import router as pdf_to_pdfa_router
+from api.v1.pdf.repair_pdf import router as repair_pdf_router
+from api.v1.pdf.page_number_pdf import router as page_number_pdf_router
+from api.v1.pdf.scan_pdf import router as scan_pdf_router
+from api.v1.pdf.compare_pdf import router as compare_pdf_router
+from api.v1.pdf.ocr_pdf import router as ocr_pdf_router
+from api.v1.pdf.redact_pdf import router as redact_pdf_router
+from api.v1.pdf.crop_pdf import router as crop_pdf_router
+
+
 
 setup_logging()
 
@@ -50,3 +61,19 @@ router.include_router(protect_pdf_router)
 router.include_router(watermark_pdf_router)
 router.include_router(router_pdf_router)
 router.include_router(html_to_pdf_router)
+router.include_router(pdf_organize_router)
+
+router.include_router(pdf_to_pdfa_router)
+router.include_router(repair_pdf_router)
+router.include_router(page_number_pdf_router)
+router.include_router(scan_pdf_router)
+
+
+
+router.include_router(ocr_pdf_router)
+router.include_router(compare_pdf_router)
+router.include_router(redact_pdf_router)
+router.include_router(crop_pdf_router)
+# router.include_router(redact_pdf_router)
+
+

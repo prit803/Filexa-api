@@ -1,11 +1,8 @@
-import os
-import uuid
-import tempfile
 from fastapi import APIRouter, UploadFile, File, Form
-from fastapi.responses import FileResponse
+from fastapi.responses import StreamingResponse, JSONResponse
 from typing import Optional
 
-from services.pdf.html_to_pdf_service import html_to_pdf
+from services.pdf.html_to_pdf_service import html_to_pdf_stream
 from core.logging import get_logger
 
 
@@ -13,52 +10,60 @@ router = APIRouter()
 logger = get_logger("htmlToPDF")
 
 
-@router.post(
-    "/html-to-pdf",
-    response_class=FileResponse,
-    responses={
-        200: {
-            "content": {"application/pdf": {}},
-            "description": "PDF file download"
-        }
-    }
-)
+@router.post("/html-to-pdf")
 async def convert_html_to_pdf(
     html: Optional[str] = Form(None),
     file: Optional[UploadFile] = File(None)
 ):
-    logger.info("HTML to PDF API called")
-
-    temp_dir = tempfile.gettempdir()
-    output_path = os.path.join(temp_dir, f"{uuid.uuid4()}.pdf")
-
     try:
-        # ✅ Case 1: Raw HTML
+        # ✅ Validate input
+        if not html and not file:
+            return JSONResponse(
+                content={
+                    "success": False,
+                    "errorMessage": "Provide HTML or file",
+                    "statusCode": "400"
+                },
+                status_code=400
+            )
+
+        # ✅ Case 1: raw HTML
         if html:
-            await html_to_pdf(html, output_path)
+            content = html
 
         # ✅ Case 2: HTML file
-        elif file:
-            content = (await file.read()).decode("utf-8")
-            await html_to_pdf(content, output_path)
-
         else:
-            return {"error": "Provide HTML or file"}
+            if file.content_type not in ["text/html"]:
+                return JSONResponse(
+                    content={
+                        "success": False,
+                        "errorMessage": "Only HTML file allowed",
+                        "statusCode": "400"
+                    },
+                    status_code=400
+                )
+            content = (await file.read()).decode("utf-8")
 
-        logger.info("PDF generated successfully")
+        # 🔥 Generate PDF
+        result = await html_to_pdf_stream(content)
 
-        # ✅ IMPORTANT → Swagger download works
-        return FileResponse(
-            output_path,
+        logger.info("HTML converted to PDF successfully")
+
+        return StreamingResponse(
+            result,
             media_type="application/pdf",
-            filename="converted.pdf"  # 👈 REQUIRED for download button
+            headers={
+                "Content-Disposition": "attachment; filename=converted.pdf"
+            }
         )
 
     except Exception as e:
-        logger.error(f"Error: {str(e)}")
-        return {"error": "Something went wrong"}
-
-    finally:
-        # 🔥 Cleanup (optional but recommended)
-        if os.path.exists(output_path):
-            pass  # keep file for download (or delete later via cron)
+        logger.error(str(e))
+        return JSONResponse(
+            content={
+                "success": False,
+                "errorMessage": str(e),
+                "statusCode": "500"
+            },
+            status_code=500
+        )

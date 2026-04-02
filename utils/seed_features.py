@@ -274,7 +274,131 @@ html_to_pdf_feature = Feature(
     seo_desc="Convert HTML to PDF online for free. Works on all devices with fast and secure processing."
 )
 
+pdf_organize = Feature(
+    feature_key="pdf_organize",
+    slug="organize-pdf",
+    name="Organize PDF",
+    desc="Reorder, rotate, delete, and manage PDF pages easily in one place.",
+    icon="bi-files",
+    category="pdf",
+    keywords=[
+        "organize pdf",
+        "reorder pdf pages",
+        "rotate pdf",
+        "delete pdf pages",
+        "arrange pdf pages online"
+    ],
+    is_active=True,
+    seo_title="Organize PDF Online Free – Reorder, Rotate & Delete Pages | Filexa",
+    seo_desc="Organize your PDF pages online for free. Reorder, rotate, delete or rearrange PDF pages instantly with secure processing."
+)
 
+
+pdf_to_pdfa = Feature(
+    feature_key="pdf_pdf_to_pdfa",
+    slug="pdf-to-pdfa",
+    name="Convert to PDF/A",
+    desc="Convert PDF files to PDF/A format for long-term archiving.",
+    icon="bi-file-earmark-lock",
+    category="pdf",
+    keywords=["pdf to pdfa", "convert to pdfa", "pdf archival format"],
+    is_active=True,
+    seo_title="Convert PDF to PDF/A Online Free | Filexa",
+    seo_desc="Convert your PDF files to PDF/A format for long-term storage. Secure and compliant PDF archival tool."
+)
+
+repair_pdf_feature = Feature(
+    feature_key="pdf_repair_pdf",
+    slug="repair-pdf",
+    name="Repair PDF",
+    desc="Fix corrupted or damaged PDF files and restore readability.",
+    icon="bi-tools",
+    category="pdf",
+    keywords=["repair pdf", "fix pdf", "corrupted pdf recovery"],
+    is_active=True,
+    seo_title="Repair PDF Online Free – Fix Corrupted PDF Files | Filexa",
+    seo_desc="Repair damaged or corrupted PDF files instantly. Restore unreadable PDFs with our secure online repair tool."
+)
+
+
+page_numbers_feature = Feature(
+    feature_key="pdf_page_numbers",
+    slug="page-numbers",
+    name="Add Page Numbers",
+    desc="Insert page numbers into PDF files with customizable position and format.",
+    icon="bi-list-ol",
+    category="pdf",
+    keywords=["add page numbers pdf", "number pdf pages", "paginate pdf"],
+    is_active=True,
+    seo_title="Add Page Numbers to PDF Online Free | Filexa",
+    seo_desc="Add page numbers to your PDF files easily. Customize position and format instantly."
+)
+
+scan_to_pdf_feature = Feature(
+    feature_key="pdf_scan_to_pdf",
+    slug="scan-to-pdf",
+    name="Scan to PDF",
+    desc="Convert images into a single PDF document quickly and easily.",
+    icon="bi-camera",
+    category="pdf",
+    keywords=["scan to pdf", "image to pdf", "jpg to pdf", "png to pdf"],
+    is_active=True,
+    seo_title="Scan to PDF Online Free – Convert Images to PDF | Filexa",
+    seo_desc="Convert JPG, PNG images into a single PDF file instantly. Fast and secure image to PDF converter."
+)
+
+ocr_pdf = Feature(
+    feature_key="ocr_pdf",
+    slug="ocr-pdf",
+    name="OCR PDF",
+    desc="Convert scanned PDF into searchable PDF using OCR.",
+    icon="bi-file-earmark-text",
+    category="pdf",
+    keywords=["ocr pdf", "scan to text pdf", "searchable pdf", "image pdf to text"],
+    is_active=True,
+    seo_title="OCR PDF Online Free – Convert Scanned PDF to Searchable PDF | Filexa",
+    seo_desc="Convert scanned PDFs into searchable PDFs using OCR. Fast, secure, and free OCR PDF tool online."
+)
+compare_pdf = Feature(
+    feature_key="pdf_compare_pdf",
+    slug="compare-pdf",
+    name="Compare PDF",
+    desc="Compare two PDF files and highlight differences.",
+    icon="bi-files",
+    category="pdf",
+    keywords=["compare pdf", "pdf difference", "diff pdf", "pdf compare"],
+    is_active=True,
+    seo_title="Compare PDF Online Free – Find Differences Between PDFs | Filexa",
+    seo_desc="Compare two PDF files and highlight differences instantly. Fast, secure, and privacy-first PDF comparison tool."
+)
+
+
+redact_pdf = Feature(
+    feature_key="pdf_redact_pdf",
+    slug="redact-pdf",
+    name="Redact PDF",
+    desc="Remove sensitive text from PDF files permanently.",
+    icon="bi-eye-slash",
+    category="pdf",
+    keywords=["redact pdf", "remove text pdf", "hide sensitive data", "pdf redact"],
+    is_active=True,
+    seo_title="Redact PDF Online Free – Remove Sensitive Data | Filexa",
+    seo_desc="Redact sensitive information from PDF files permanently. Fast, secure, and privacy-first PDF redaction tool."
+)
+
+
+crop_pdf = Feature(
+    feature_key="pdf_crop_pdf",
+    slug="crop-pdf",
+    name="Crop PDF",
+    desc="Crop PDF pages by adjusting margins.",
+    icon="bi-crop",
+    category="pdf",
+    keywords=["crop pdf", "trim pdf", "remove margins pdf", "pdf crop"],
+    is_active=True,
+    seo_title="Crop PDF Online Free – Trim PDF Pages Easily | Filexa",
+    seo_desc="Crop PDF pages online by removing unwanted margins. Fast, secure, and privacy-first PDF crop tool."
+)
 # db.add(merge_pdf)
 # db.add(split_pdf)
 # db.add(compress_pdf)
@@ -294,6 +418,16 @@ html_to_pdf_feature = Feature(
 # db.add(watermark_pdf)
 # db.add(rotate_pdf_feature)
 # db.add(html_to_pdf_feature)
+# db.add(pdf_organize)
+# db.add(pdf_to_pdfa)
+# db.add(repair_pdf_feature)
+# db.add(page_numbers_feature)
+# db.add(scan_to_pdf_feature)
+# db.add(ocr_pdf)
+# db.add(compare_pdf)
+# db.add(redact_pdf)
+db.add(crop_pdf)
+# db.add()
 
 db.commit()
 db.close()
