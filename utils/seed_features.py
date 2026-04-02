@@ -399,6 +399,56 @@ crop_pdf = Feature(
     seo_title="Crop PDF Online Free – Trim PDF Pages Easily | Filexa",
     seo_desc="Crop PDF pages online by removing unwanted margins. Fast, secure, and privacy-first PDF crop tool."
 )
+
+compress_image = Feature(
+    feature_key="image_compress_image",
+    slug="compress-image",
+    name="Compress Image",
+    desc="Reduce image file size without significant quality loss.",
+    icon="bi-image",
+    category="image",
+    keywords=["compress image", "reduce image size", "optimize image", "image compression"],
+    is_active=True,
+    seo_title="Compress Image Online Free – Reduce Image Size | Filexa",
+    seo_desc="Compress JPG, PNG, and WEBP images online without losing quality. Fast, secure, and privacy-first image compression tool."
+)
+resize_image = Feature(
+    feature_key="image_resize_image",
+    slug="resize-image",
+    name="Resize Image",
+    desc="Resize images to specific dimensions with or without aspect ratio.",
+    icon="bi-aspect-ratio",
+    category="image",
+    keywords=["resize image", "change image size", "image resizer", "scale image"],
+    is_active=True,
+    seo_title="Resize Image Online Free – Change Image Dimensions | Filexa",
+    seo_desc="Resize JPG, PNG, and WEBP images online easily. Maintain aspect ratio or set custom size. Fast and secure image resizer."
+)
+
+crop_image = Feature(
+    feature_key="image_crop_image",
+    slug="crop-image",
+    name="Crop Image",
+    desc="Crop images by selecting a specific area.",
+    icon="bi-crop",
+    category="image",
+    keywords=["crop image", "image crop", "cut image", "trim image"],
+    is_active=True,
+    seo_title="Crop Image Online Free – Trim & Cut Images | Filexa",
+    seo_desc="Crop JPG, PNG, and WEBP images online by selecting area. Fast, secure, and privacy-first image crop tool."
+)
+rotate_image = Feature(
+    feature_key="image_rotate_image",
+    slug="rotate-image",
+    name="Rotate Image",
+    desc="Rotate images by 90, 180, or 270 degrees.",
+    icon="bi-arrow-clockwise",
+    category="image",
+    keywords=["rotate image", "flip image", "turn image", "image rotation"],
+    is_active=True,
+    seo_title="Rotate Image Online Free – Turn Images Easily | Filexa",
+    seo_desc="Rotate JPG, PNG, and WEBP images online instantly. Fast, secure, and privacy-first image rotation tool."
+)
 # db.add(merge_pdf)
 # db.add(split_pdf)
 # db.add(compress_pdf)
@@ -426,8 +476,11 @@ crop_pdf = Feature(
 # db.add(ocr_pdf)
 # db.add(compare_pdf)
 # db.add(redact_pdf)
-db.add(crop_pdf)
-# db.add()
+# db.add(crop_pdf)
+# db.add(compress_image)
+# db.add(resize_image)
+# db.add(crop_image)
+db.add(rotate_image)
 
 db.commit()
 db.close()
